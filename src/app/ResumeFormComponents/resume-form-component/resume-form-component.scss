@@ -1,0 +1,89 @@
+
+.resume-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .mat-stepper-horizontal {
+    background-color: transparent !important;
+    overflow-y: auto;
+    max-height: 38rem;
+  }
+
+  mat-form-field {
+    padding: 0 20px 10px 20px;
+  }
+
+  .personal-details {
+
+  }
+}
+
+@mixin styleStepLine($index) {
+  div.mat-horizontal-stepper-header-container {
+    .mat-stepper-horizontal-line {
+      display: none !important;
+    }
+    .mat-horizontal-stepper-header:nth-child(#{$index})
+  ) {
+    display: flex !important;
+  }
+  }
+}
+
+::ng-deep {
+  div.mat-horizontal-stepper-header-container {
+    display: block;
+    .mat-horizontal-stepper-header {
+      display: none;
+    }
+  }
+  .last-edited-step-0 {
+    @include styleStepLine(1);
+    @include styleStepLine(2);
+  }
+  .last-edited-step-1 {
+    @include styleStepLine(2);
+    @include styleStepLine(3);
+    @include styleStepLine(4);
+  }
+  .last-edited-step-2 {
+    @include styleStepLine(4);
+    @include styleStepLine(5);
+    @include styleStepLine(6);
+  }
+  .last-edited-step-3 {
+    @include styleStepLine(6);
+    @include styleStepLine(7);
+    @include styleStepLine(8);
+  }
+  .last-edited-step-4 {
+    @include styleStepLine(8);
+    @include styleStepLine(9);
+    @include styleStepLine(10);
+  }
+  .last-edited-step-5 {
+    @include styleStepLine(10);
+    @include styleStepLine(11);
+    @include styleStepLine(12);
+  }
+
+  .last-edited-step-6 {
+    @include styleStepLine(12);
+    @include styleStepLine(13);
+    @include styleStepLine(14);
+  }
+
+  .last-edited-step-7 {
+    @include styleStepLine(14);
+    @include styleStepLine(15);
+    @include styleStepLine(16);
+  }
+
+  .last-edited-step-8 {
+    @include styleStepLine(16);
+    @include styleStepLine(17);
+    @include styleStepLine(18);
+  }
+
+}

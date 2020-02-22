@@ -1,0 +1,141 @@
+<ng-container *ngIf="user">
+  <div class="resume-block">
+    <div id="MyDIv" class="resume d-flex">
+      <div class="leftCol pb-3">
+        <div class="heading" id="myselfpic">
+        </div>
+        <div class="section-headline">
+          Personal Details
+        </div>
+        <div class="item">
+          <div class="icon">
+            <i class="material-icons">account_circle</i>
+          </div>
+          <div class="text">
+            <div> {{ dateUtils.stringFormat( user.details.dob) }}</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="icon">
+            <i class="material-icons">location_city</i>
+          </div>
+          <div class="text">
+            <ul>
+              <li>{{user.address.line1}}</li>
+              <li>{{user.address.line2}}</li>
+              <li>{{user.address.city}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="item">
+          <div class="icon">
+            <i class="material-icons">phone</i>
+          </div>
+          <div class="text">
+            {{user.details.number}}
+          </div>
+        </div>
+        <div class="item">
+          <div class="icon">
+            <i class="material-icons">email</i>
+          </div>
+          <div class="text">
+            {{user.socailDetails.gmail}}
+          </div>
+        </div>
+        <div class="item">
+          <div class="icon">
+            <i class="material-icons">
+              code
+            </i>
+          </div>
+          <div class="text">
+            <span>{{user.socailDetails.github}}</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="icon">
+            <i class="material-icons">language</i>
+          </div>
+          <div class="text">
+            <span>{{user.socailDetails.personalWebsite}}</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="section-headline">
+            Skills
+          </div>
+          <div class="skill" *ngFor="let skill of user.skills">
+            <div class="right">
+              <span>{{skill.name}}&nbsp;</span>
+              <div class="progress">
+                <div class="determinate" [ngStyle]="{'width.%': skill.level}">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item last">
+          <div class="section-headline">
+            Hobbies
+          </div>
+          <ul class="skill">
+            <li class="right" *ngFor="let hobby of user.hobbies">
+              <div class="d-flex align-items-baseline pb-1">
+                <div class="circle-dot mr-3" style="background-color: white;"></div>
+                <span>{{hobby.name}}&nbsp;</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rightCol pl-3 pb-3">
+        <div class="title">
+          <h2>{{user.details.first_name}} {{user.details.last_name}}</h2>
+          <div>{{user.details.designation}}</div>
+          <div>{{user.socailDetails.introduction}}</div>
+        </div>
+
+        <div class="section-headline ml-1">Work Experiences</div>
+        <div class="block" *ngFor="let exp of user.workExp">
+          <h3 class="headline">{{exp.projectName}}</h3>
+          <div class="subheadline">From {{dateUtils.stringFormat(exp.startDate)}} to
+            {{dateUtils.stringFormat(exp.endDate)}}
+          </div>
+          <p class="info">
+            {{exp.info}}
+          </p>
+        </div>
+
+        <div class="section-headline ml-1">Educational Qulaifications</div>
+        <div class="block" *ngFor="let edu of user.education">
+          <div class="headline">{{edu.name}}</div>
+          <div class="subheadline">From {{dateUtils.stringFormat(edu.startDate)}} to
+            {{dateUtils.stringFormat(edu.endDate)}}
+          </div>
+          <p class="info">
+            {{edu.info}}
+          </p>
+        </div>
+
+        <div class="section-headline ml-1">Achievements</div>
+        <ol class="block">
+          <li *ngFor="let ach of user.achievements" class="info p-0">
+            <div class="d-flex align-items-baseline pb-1">
+              <div class="circle-dot mr-3"></div>
+              <div>{{ach.information}}</div>
+            </div>
+          </li>
+        </ol>
+
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+</ng-container>
+
+<div (click)="exportAsPDF('MyDIv');">Share As PDF</div>

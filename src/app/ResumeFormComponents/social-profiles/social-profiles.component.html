@@ -1,0 +1,39 @@
+<form class="d-flex w-100" (submit)="emitStepData()" [formGroup]="socailDetailsFormGroup">
+  <div class="d-flex flex-column w-50 justify-content-start flex-wrap ">
+
+    <mat-form-field>
+      <input required formControlName="introduction" matInput placeholder="Short Introductory Paragraph goes here ..."/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Gmail" formControlName="gmail" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="url" formControlName="linkedin" matInput placeholder="Linkedin">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="url" matInput placeholder="GitHub" formControlName="github">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="url" matInput placeholder="Personal Blog" formControlName="personalBlog">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="url" matInput placeholder="Personal Website" formControlName="personalWebsite">
+    </mat-form-field>
+
+  </div>
+
+  <div class="d-flex flex-column w-50 align-items-end pb-3">
+    <img class="form-img" style="max-height: 350px" src="../../../assets/form/social.svg">
+    <div class="d-flex">
+      <button class="form-btn" mat-button matStepperPrevious>Back</button>
+      <button [disabled]="socailDetailsFormGroup.invalid" class="form-btn" mat-button matStepperNext>Next</button>
+    </div>
+  </div>
+</form>
+
+

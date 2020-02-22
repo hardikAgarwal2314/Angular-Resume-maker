@@ -1,0 +1,49 @@
+<form (submit)="emitStepData()" [formGroup]="personalDetailsFormGroup">
+  <div class="d-flex w-100">
+    <div class="d-flex flex-column w-50 justify-content-start flex-wrap ">
+      <mat-form-field>
+        <input matInput placeholder="First Name" formControlName="first_name" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Last Name" formControlName="last_name" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="number" matInput placeholder="Contact Number" formControlName="number" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input (click)="picker.open()" formControlName="dob"  required matInput [max]="maxDate" [matDatepicker]="picker"
+               placeholder="Date of Birth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div class="d-flex align-items-center" style="padding: 0 20px 10px 20px;">
+        <label id="example-radio-group-label pl-4">Gender</label>
+        <mat-radio-group
+          required
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+          [ngModelOptions]="{standalone: true}"
+          [(ngModel)]="gender">
+          <mat-radio-button class="example-radio-button pl-4" value="male">
+            Male
+          </mat-radio-button>
+          <mat-radio-button class="example-radio-button pl-4" [value]="'female'">
+            Female
+          </mat-radio-button>
+          <mat-radio-button class="example-radio-button pl-4" [value]="'other'">
+            Other
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <mat-form-field>
+        <input matInput placeholder="Designation" formControlName="designation" required>
+      </mat-form-field>
+
+    </div>
+    <div class="d-flex flex-column w-50 align-items-end pb-3">
+      <img class="form-img" src="../../../assets/form/details.svg">
+      <div class="spacer"></div>
+      <button [disabled]="personalDetailsFormGroup.invalid" class="form-btn" mat-button matStepperNext>Next</button>
+    </div>
+  </div>
+</form>

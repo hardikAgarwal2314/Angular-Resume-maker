@@ -1,0 +1,115 @@
+<div class="resume-block">
+  <div class="resume">
+    <div class="banner">
+      <div class="banner__fullname">{{ user.details.first_name }} {{ user.details.last_name }}</div>
+      <div class="banner__position">{{ user.details.designation }}</div>
+      <div class="banner__location">{{ dateUtils.stringFormat(user.details.dob) }}</div>
+    </div>
+
+    <div class="content">
+      <div class="content__left">
+        <div class="section">
+          <div class="section-headline">
+            About
+          </div>
+
+          <div class="section-content section-content--plain">
+            About
+            <br/>
+            <br/>
+            About
+          </div>
+        </div>
+
+        <div
+          class="section">
+          <div class="section-headline">
+            Skills
+          </div>
+
+          <div class="section-content-grid">
+            <div *ngFor="let skill of user.skills"
+                 class="grid-item">
+              <span class="squarred-grid-item">
+                {{ skill.name }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-headline">
+            Contact Details
+          </div>
+
+          <div class="section-content section-content--plain">
+            <div class="section-link">
+              <i class="section-link__icon material-icons">business</i>{{ user.address.line1 }} | {{ user.address.line2
+              }}|{{ user.address.city }}
+            </div>
+
+            <div class="section-link">
+              <i class="section-link__icon material-icons">mail</i>{{ user.socailDetails.gmail }}
+            </div>
+
+            <div class="section-link">
+              <i class="section-link__icon material-icons">phone</i>{{ user.details.number }}
+            </div>
+
+            <div class="section-link">
+              <i class="section-link__icon fa fa-globe"></i>{{ user.socailDetails.personalWebsite }}
+            </div>
+
+            <div class="section-link">
+              <i class="section-link__icon fa fa-linkedin"></i>{{ user.socailDetails.linkedin }}
+            </div>
+
+            <div
+              class="section-link">
+              <i class="section-link__icon fa fa-github"></i>{{ user.socailDetails.github }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content__right">
+        <div class="section">
+          <div class="section-headline">
+            <i class="section-headline__icon material-icons">Work Experience</i>
+          </div>
+
+          <div class="section-content">
+            <div *ngFor="let exp of user.workExp"
+                 class="section-content__item">
+
+              <span class="section-content__header">{{ exp.projectName }}</span>
+              <span class="section-content__subheader">
+               From {{ dateUtils.stringFormat(exp.startDate) }} to {{dateUtils.stringFormat(exp.endDate)}}
+              </span>
+              <span class="section-content__text--light">{{ exp.info  }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-headline">
+            <i class="section-headline__icon material-icons">Qualifications</i>
+          </div>
+
+          <div class="section-content">
+            <div *ngFor="let education of user.education"
+                 class="section-content__item">
+
+              <span class="section-content__header"> {{ education.name }} </span>
+              <span class="section-content__text">  From {{ dateUtils.stringFormat(education.startDate) }} to {{dateUtils.stringFormat(education.endDate)}}</span>
+              <span class="section-content__text--light"> {{ education.info }} </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+

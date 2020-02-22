@@ -1,0 +1,36 @@
+<form (submit)="emitStepData()">
+  <div class="d-flex w-100">
+    <div class="d-flex flex-column w-50 justify-content-start flex-wrap ">
+      <div class="w-100" *ngFor="let hobby of hobbies, let i = index">
+        <div class="pt-3 d-flex flex-column w-100"
+             [ngStyle]="{'border-bottom':hobbies.length > 1 ? '1px solid black' : '' }">
+
+          <div class="d-flex">
+            <mat-form-field class="w-100">
+              <input required matInput placeholder="Name of the skill"
+                     [(ngModel)]="hobby.name" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+
+
+            <ng-container *ngIf="hobbies.length > 1">
+              <div class="spacer"></div>
+              <div (click)="removeHobbies(i)">
+                <i class="material-icons">
+                  highlight_off
+                </i>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-column w-50 align-items-end pb-3">
+      <img style="max-height: 350px; max-width: 500px" src="../../../assets/form/hobbies.svg">
+      <div class="d-flex">
+        <button class="form-btn" mat-button matStepperPrevious>Back</button>
+        <button class="form-btn" mat-stroked-button (click)="addMoreHobbies()">Add More</button>
+        <button [disabled]="isValidStep()" class="form-btn" mat-button matStepperNext>Next</button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,5 @@
+  <div class="previews">
+    <ng-container *ngFor="let image of images; let i = index">
+      <app-resume-component [ngClass]="{'selected': selectedIndex === i}" [image]="image" (emitIndex)="setSelectedIndex($event)" ></app-resume-component>
+    </ng-container>
+  </div>

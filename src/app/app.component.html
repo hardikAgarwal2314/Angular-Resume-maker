@@ -1,0 +1,34 @@
+<section id="uno" class="muestra">
+  <div class="content">
+    <div id="background-wrap">
+      <app-bubble></app-bubble>
+      <app-home></app-home>
+      <button (click)="setSectionClass()" mat-raised-button color="accent" class="btn-background">
+        Get Started
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="dos">
+  <app-bubble></app-bubble>
+  <app-resume-form (emitUser)=setUser($event) ></app-resume-form>
+</section>
+
+<section id="forms">
+  <app-loading-screen></app-loading-screen>
+</section>
+
+
+<section id="resume">
+  <app-material-dark [user]="user" ></app-material-dark>
+
+  <!--<app-cool-theame [user]="user"></app-cool-theame>-->
+</section>
+
+
+
+
+
+
+
