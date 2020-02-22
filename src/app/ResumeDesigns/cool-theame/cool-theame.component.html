@@ -1,42 +1,18 @@
 <div class="resume-block">
-  <div class="resume">
-    <div class="banner">
-      <div class="banner__fullname">{{ user.details.first_name }} {{ user.details.last_name }}</div>
-      <div class="banner__position">{{ user.details.designation }}</div>
-      <div class="banner__location">{{ dateUtils.stringFormat(user.details.dob) }}</div>
+  <div id="MyDIv" class="resume">
+    <div class="banner d-flex justify-content-between">
+      <div class="d-flex flex-column">
+        <div class="banner__fullname">{{ user.details.first_name }} {{ user.details.last_name }}</div>
+        <div class="banner__position">{{ user.details.designation }}</div>
+        <div class="banner__location">{{ dateUtils.birthDate(user.details.dob) }}</div>
+      </div>
+      <div class="d-flex flex-column w-35">
+        {{user.socailDetails.introduction}}
+      </div>
     </div>
 
     <div class="content">
       <div class="content__left">
-        <div class="section">
-          <div class="section-headline">
-            About
-          </div>
-
-          <div class="section-content section-content--plain">
-            About
-            <br/>
-            <br/>
-            About
-          </div>
-        </div>
-
-        <div
-          class="section">
-          <div class="section-headline">
-            Skills
-          </div>
-
-          <div class="section-content-grid">
-            <div *ngFor="let skill of user.skills"
-                 class="grid-item">
-              <span class="squarred-grid-item">
-                {{ skill.name }}
-              </span>
-            </div>
-          </div>
-        </div>
-
         <div class="section">
           <div class="section-headline">
             Contact Details
@@ -44,8 +20,8 @@
 
           <div class="section-content section-content--plain">
             <div class="section-link">
-              <i class="section-link__icon material-icons">business</i>{{ user.address.line1 }} | {{ user.address.line2
-              }}|{{ user.address.city }}
+              <i class="section-link__icon material-icons">business</i>{{ user.address.line1 }} <br>
+              {{ user.address.line2 }} <br>{{ user.address.city }}
             </div>
 
             <div class="section-link">
@@ -57,25 +33,51 @@
             </div>
 
             <div class="section-link">
-              <i class="section-link__icon fa fa-globe"></i>{{ user.socailDetails.personalWebsite }}
+              <i class="section-link__icon material-icons">language</i>{{ user.socailDetails.personalWebsite }}
             </div>
 
             <div class="section-link">
-              <i class="section-link__icon fa fa-linkedin"></i>{{ user.socailDetails.linkedin }}
+              <i class="section-link__icon material-icons">code</i>{{ user.socailDetails.linkedin }}
             </div>
-
-            <div
-              class="section-link">
-              <i class="section-link__icon fa fa-github"></i>{{ user.socailDetails.github }}
+          </div>
+        </div>
+        <div
+          class="section">
+          <div class="section-headline">
+            Skills
+          </div>
+          <div class="section-content-grid">
+            <div *ngFor="let skill of user.skills" class="grid-item">
+              <div class="d-flex align-items-center">
+                <span class="squarred-grid-item">
+                {{ skill.name }}
+              </span> <span class="pl-2"> =>  {{skill.level}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="section">
+          <div class="section-headline">
+            Hobbies
+          </div>
+          <div class="section-content-grid">
+            <div *ngFor="let hobby of user.hobbies" class="grid-item">
+              <div class="d-flex align-items-center">
+                <span class="squarred-grid-item">
+                {{ hobby.name }}
+              </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="content__right">
+      <div class="content__right w-100">
+
         <div class="section">
           <div class="section-headline">
-            <i class="section-headline__icon material-icons">Work Experience</i>
+            <span class="right-headline ">Work Experience</span>
           </div>
 
           <div class="section-content">
@@ -93,7 +95,7 @@
 
         <div class="section">
           <div class="section-headline">
-            <i class="section-headline__icon material-icons">Qualifications</i>
+            <span class="right-headline ">Qualifications</span>
           </div>
 
           <div class="section-content">
@@ -101,8 +103,23 @@
                  class="section-content__item">
 
               <span class="section-content__header"> {{ education.name }} </span>
-              <span class="section-content__text">  From {{ dateUtils.stringFormat(education.startDate) }} to {{dateUtils.stringFormat(education.endDate)}}</span>
+              <span class="section-content__subheader">  From {{ dateUtils.stringFormat(education.startDate) }} to {{dateUtils.stringFormat(education.endDate)}}</span>
               <span class="section-content__text--light"> {{ education.info }} </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-headline">
+            <span class="right-headline ">Achievements</span>
+          </div>
+
+          <div class="section-content section-content__item">
+            <div *ngFor="let ach of user.achievements">
+              <div class="d-flex align-items-baseline pb-1">
+                <div class="circle-dot mr-3"></div>
+                <span class="section-content__text--light"> {{ ach.information }} </span>
+              </div>
             </div>
           </div>
         </div>

@@ -11,7 +11,6 @@ a {
 
 .resume {
   position: relative;
-  font-family: 'Roboto' !important;
   font-size: 0.9em;
 }
 
@@ -27,15 +26,9 @@ a {
 }
 
 .banner {
-  width: calc(100% - 30px * 2);
   height: 120px;
-  padding: 30px;
+  padding: 15px 30px;
   background-color: #42b883;
-  /*
-    background-image: url('../../resume/banner.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-  */
   color: white;
 
   &__fullname {
@@ -43,11 +36,11 @@ a {
   }
 
   &__position {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   &__location {
-    font-size: 12px;
+    font-size: 16px;
   }
 }
 
@@ -58,12 +51,11 @@ a {
 
   &__left,
   &__right {
-    height: 100%;
-    padding: 30px;
+    padding: 20px;
   }
 
   &__left {
-    width: 240px;
+    width: 27%;
     color: rgba(255, 255, 255, 0.59);
     background-color: #34495E;
 
@@ -73,7 +65,7 @@ a {
   }
 
   &__right {
-    flex: 1;
+    background-color: white;
   }
 }
 
@@ -84,11 +76,9 @@ a {
 .section-link,
 .section-headline {
   display: flex !important;
-  align-items: center;
   color: #34495E;
-  display: inline-block;
-  font-size: 1.2em;
-  margin: 8px 0;
+  font-size: 16px;
+  margin: 10px 0;
 
   &__icon {
     margin-right: 8px;
@@ -107,23 +97,25 @@ a {
 
 .section-content {
   margin-top: 5px;
-  padding-left: 32px;
   font-size: 14px;
 
   &__item {
     display: block;
-    margin-bottom: 5px;
+    margin: 8px 0;
+    border: 1px solid #34495e;
+    padding: 10px;
+    border-radius: 10px;
+    background: #0c79e614;
   }
 
   &__header {
-    display: block;
-    font-size: 1.1em;
-    font-weight: 500;
+    font-size: 20px;
   }
 
   &__subheader {
     display: block;
-    font-weight: 400;
+    font-size: 14px;
+    color: #aeb6be;
   }
 
   &__plain,
@@ -132,7 +124,7 @@ a {
     font-size: 12px;
 
     &--light {
-      font-size: 12px;
+      font-size: 16px;
     }
   }
 
@@ -153,8 +145,6 @@ a {
 }
 
 .section-content-grid {
-  display: flex;
-  flex-wrap: wrap;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -168,5 +158,23 @@ a {
   border: 1px solid white;
   color: white;
   margin-top: 5px;
-  padding: 5px;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+.right-headline {
+  font-style: normal;
+  font-size: 24px
+}
+
+.circle-dot {
+  height: 8px;
+  width: 8px;
+  background: black;
+  border-radius: 50%;
+}
+
+.w-35 {
+  width: 35%;
+  font-size: 16px;
 }

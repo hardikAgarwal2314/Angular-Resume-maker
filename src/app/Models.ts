@@ -1,16 +1,16 @@
 import * as moment from 'moment';
 
 export class Education {
-  startDate: string;
-  endDate: string;
+  startDate: number;
+  endDate: number;
   info: string;
   name: string;
 
 }
 
 export class WorkExp {
-  startDate: string;
-  endDate: string;
+  startDate: number;
+  endDate: number;
   info: string;
   projectName: string;
 }
@@ -67,7 +67,12 @@ export class User {
 }
 
 export class DateUtils {
+
   static stringFormat(value) {
     return moment(value).format('YYYY-MM-DD').toString()
+  }
+
+  static birthDate(value) {
+    return moment(value).format('MMMM Do YYYY');
   }
 }

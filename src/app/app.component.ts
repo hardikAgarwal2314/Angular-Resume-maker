@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from './Models';
+import * as JSPDF from 'jspdf';
+import * as domtoimage from 'dom-to-image';
 
 @Component({
   selector: 'app-root',
@@ -13,36 +15,36 @@ export class AppComponent implements OnInit {
   constructor() {
     this.user = {
       details: {
-        number: 9999999,
-        last_name: 'dsd sdsd',
-        first_name: 'dsd sdsd',
-        designation: 'dsdsd sddsdsdsd',
+        number: 9999300755,
+        last_name: 'Agarwal',
+        first_name: 'Hardik',
+        designation: 'Angular Developer',
         dob: Date.now(),
       },
       address: {
-        line1: 'dsds dsdds dsdsd dsdsdsd',
-        line2: 'dsd sdsdd sdsdsd dsdsdsd',
-        city: 'dsd sdsd',
-        state: 'ds dsdsd',
+        line1: 'C-219/A',
+        line2: 'New Panchwati colony',
+        city: 'Ghaziabad',
+        state: 'Up',
         pinCode: 20101101,
       },
       education: [
         {
           info: 'Worked on some live Web projects which includes full front-end development of websites including the project management',
-          startDate: 'dsd sds ddsdsdsd',
-          endDate: 'dsdsd sdd sdsdsd',
+          startDate:  Date.now(),
+          endDate:  Date.now(),
           name: 'Bachelor of Technology (IT)'
         },
         {
           info: 'Worked on some live Web projects which includes full front-end development of websites including the project management',
-          startDate: 'dsd sds ddsdsdsd',
-          endDate: 'dsdsd sdd sdsdsd',
+          startDate:  Date.now(),
+          endDate:  Date.now(),
           name: 'Bachelor of Technology (IT)'
         },
         {
           info: 'Worked on some live Web projects which includes full front-end development of websites including the project management)',
-          startDate: 'dsd sds ddsdsdsd',
-          endDate: 'dsdsd sdd sdsdsd',
+          startDate:  Date.now(),
+          endDate: Date.now(),
           name: 'Bachelor of Technology (IT)'
         },
       ],
@@ -50,22 +52,22 @@ export class AppComponent implements OnInit {
         {
           info: '\n' +
             'Worked on some live Web projects which includes full front-end development of websites including the project management',
-          startDate: 'dsds ds  ddsdsdsd',
-          endDate: 'dsdsds d dsdsdsd',
+          startDate:  Date.now(),
+          endDate: Date.now(),
           projectName: 'Angular Developer (Intern) - DevsLane'
         },
         {
           info: '\n' +
             'Worked on some live Web projects which includes full front-end development of websites including the project management',
-          startDate: 'dsds ds  ddsdsdsd',
-          endDate: 'dsdsds d dsdsdsd',
+          startDate:  Date.now(),
+          endDate: Date.now(),
           projectName: 'Angular Developer (Intern) - DevsLane'
         },
         {
           info: '\n' +
             'Worked on some live Web projects which includes full front-end development of websites including the project management',
-          startDate: 'dsds ds  ddsdsdsd',
-          endDate: 'dsdsds d dsdsdsd',
+          startDate:  Date.now(),
+          endDate: Date.now(),
           projectName: 'Angular Developer (Intern) - DevsLane'
         },
       ],
@@ -86,42 +88,42 @@ export class AppComponent implements OnInit {
       ],
       skills: [
         {
-          name: 'projectNameprojectName',
+          name: 'Angular',
           level: 80
         },
         {
-          name: 'projectNameprojectName',
+          name: 'Redux',
           level: 70
         },
         {
-          name: 'projectNameprojectName',
+          name: 'React',
           level: 60
         },
         {
-          name: 'projectNameprojectName',
+          name: 'Github',
           level: 40
         },
         {
-          name: 'projectNameprojectName',
+          name: 'OOPS',
           level: 85
         },
       ],
       socailDetails: {
-        linkedin: 'dfhj dfk  jdgkjfghkjf',
-        github: 'dfhjdf kjdgkjfghkjf',
-        gmail: 'dfhjdf kjdgkjf ghkjf',
-        personalWebsite: 'dfhjd fkjdgkj fghkjf',
-        personalBlog: 'dfhjd fkjdgkjfg hkjfd fhjdfkj dgkjfghkjf',
+        linkedin: 'hardik20111997@gmail.com',
+        github: 'hardik20111997@gmail.com',
+        gmail: 'hardik20111997@gmail.com',
+        personalWebsite: 'hardik20111997@gmail.com',
+        personalBlog: 'hardik20111997@gmail.com',
         introduction: 'My Objective is to make use of my Interpersonal Skills to achieve goals of a company where I can utilize my Positive Attitude and Technical Knowledge to the maximum.'
       }
     };
   }
 
   ngOnInit(): void {
-    document.getElementById('forms').className = ('display-none');
-    document.getElementById('dos').className = ('display-none');
-    document.getElementById('resume').className = ('display-none');
-    // document.getElementById('resume').className = ('muestra');
+    // document.getElementById('forms').className = ('display-none');
+    // document.getElementById('dos').className = ('display-none');
+    // document.getElementById('resume').className = ('display-none');
+    document.getElementById('resume').className = ('muestra');
   }
 
   setSectionClass() {
@@ -132,6 +134,44 @@ export class AppComponent implements OnInit {
   setUser($event: any) {
     this.user = $event;
     localStorage.setItem(`${this.user}`, 'user');
+  }
+
+  exportAsPDF() {
+    const node = document.getElementById('MyDIv');
+
+    let img;
+    let filename;
+    let newImage;
+
+
+    domtoimage.toPng(node, { quality: 1 })
+
+      .then(function (dataUrl) {
+
+        img = new Image();
+        img.src = dataUrl;
+        newImage = img.src;
+
+        img.onload = function () {
+          let doc;
+          doc = new JSPDF('p', 'mm', 'a4');
+          const width = doc.internal.pageSize.getWidth();
+          const height = doc.internal.pageSize.getHeight();
+
+
+          doc.addImage(newImage, 'PNG', 0, 0, width, height);
+          filename = `user` + '.pdf';
+          doc.save(filename);
+
+        };
+
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
   }
 }
 
