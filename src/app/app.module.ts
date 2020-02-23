@@ -36,6 +36,7 @@ import { MaterialDarkComponent } from './ResumeDesigns/material-dark/material-da
 import { LoadingScreenComponent } from './UI-components/loading-screen/loading-screen.component';
 import { HobbiesComponent } from './ResumeFormComponents/hobbies/hobbies.component';
 import { CoolTheameComponent } from './ResumeDesigns/cool-theame/cool-theame.component';
+import { CreativeTheameComponent } from './ResumeDesigns/creative-theame/creative-theame.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -77,6 +78,7 @@ const routes: Routes = [
     LoadingScreenComponent,
     HobbiesComponent,
     CoolTheameComponent,
+    CreativeTheameComponent,
   ],
   bootstrap: [AppComponent],
   exports: [RouterModule, MatNativeDateModule],

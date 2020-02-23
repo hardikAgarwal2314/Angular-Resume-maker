@@ -1,0 +1,148 @@
+<ng-container *ngIf="user">
+  <div class="resume-block">
+    <div class="resume" id="MyDIv">
+      <div class="left-column">
+        <div>
+          <div class="headline">
+            <span> {{ user.details.first_name }} {{ user.details.last_name }} </span>
+          </div>
+
+          <p>
+            <span class="txt-full-white"> {{ user.details.designation }} </span>
+            <br/>
+            <span> {{ user.address.line1}} </span>
+            <span> {{ user.address.line2}} </span>
+            <span> {{ user.address.city}} </span>
+          </p>
+        </div>
+
+        <div class="multi-line-txt">
+          {{ user.socailDetails.introduction }}
+        </div>
+
+        <div class="multi-line-txt">
+          Qualifications
+        </div>
+
+        <div>
+          <div class="block-marged txt-full-white">
+            {{ user.socailDetails.gmail }}
+          </div>
+        </div>
+
+        <div class="block-marged txt-full-white">
+          {{user.details.number}}
+        </div>
+
+        <div class="social-container">
+          <div class="block-marged txt-full-white">
+            <i class="fa fa-globe contact-icon"></i>
+            {{ user.socailDetails.personalWebsite }}
+          </div>
+
+          <div class="external-link">
+            <i class="fa fa-github contact-icon"></i>
+            <span class="block-marged txt-full-white">
+          {{ user.socailDetails.personalWebsite }}
+          </span>
+
+            <div class="external-link">
+              <svg width="20" height="20" viewBox="0 0 24 24"
+                   class="contact-icon-svg">
+                <path
+                  d="M12 15.2L9.2 4.8 0 3.2l1.7 2.6 5.7.7.7 2.3-3.7-.4 1.3 2 3 .3L12 20.8l3.3-10.1 3-.3 1.3-2-3.7.4.7-2.3 5.7-.7L24 3.2l-9.2 1.6">
+                </path>
+              </svg>
+
+              <span class="block-marged txt-full-white">
+                {{ user.socailDetails.personalWebsite }}
+          </span>
+            </div>
+
+            <a class="external-link">
+              <i class="fab fa-medium contact-icon"></i>
+              <span class="block-marged txt-full-white">
+            {{ user.socailDetails.personalWebsite }}
+          </span>
+            </a>
+          </div>
+
+          <div class="hobbies-container">
+            <span class="subheadline">Hobbies</span>
+            <div class="hobbies-content">
+              <div *ngFor="let hobby of user.hobbies"
+                   class="hobby-item">
+
+                <i v-if="hobby.iconClass" :class="hobby.iconClass + ' hobby-item__icon'"></i>
+                <span class="hobby-item__icon-label"> {{ hobby.name }} </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="right-column">
+        <div class="experience-section section">
+          <div class="icon">
+            <i class="material-icons small-icon">work</i>
+            <span class="section-headline">Work Experiences</span>
+          </div>
+
+          <div class="section-content">
+            <a *ngFor="let exp of user.workExp"
+               class="section-content__item">
+
+              <span class="section-content__header"> {{ exp.projectName }}</span>
+              <div class="section-content__text"> From {{dateUtils.stringFormat( exp.startDate )}} to
+                {{dateUtils.stringFormat( exp.endDate )}}
+              </div>
+              <span class="section-content__text--light"> {{ exp.info }}</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="education-section section">
+          <div class="icon">
+            <i class="material-icons">school</i>
+            <span class="section-headline">Qualifications</span>
+          </div>
+
+          <
+          <div class="section-content">
+            <a *ngFor="let education of user.education"
+               class="section-content__item">
+
+              <span class="section-content__header"> {{ education.name }}</span>
+              <div class="section-content__text"> From {{dateUtils.stringFormat( education.startDate )}} to
+                {{dateUtils.stringFormat( education.endDate )}}
+              </div>
+              <span class="section-content__text--light"> {{ education.info }}</span>
+            </a>
+          </div>
+        </div>
+
+
+        <div class="skills-section section">
+          <div class="icon">
+            <i class="material-icons">done_all</i>
+            <span class="section-headline"> Skills </span>
+          </div>
+
+          <div class="section-content-grid">
+            <a *ngFor="let skill of user.skills" class="grid-item">
+              <span class="squarred-grid-item"> {{ skill.name }} </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</ng-container>
+
+
+
+
+
